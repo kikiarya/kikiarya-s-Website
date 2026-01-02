@@ -1,8 +1,8 @@
 
 'use client';
 
-import { useEffect } from 'react';
-import Container from '@/components/Container';
+import React, { useEffect } from 'react';
+import Container from '../components/Container';
 
 export default function Error({
   error,
@@ -22,7 +22,7 @@ export default function Error({
         <h2 className="text-5xl font-semibold tracking-tighter mb-10">Something went <br /><span className="text-slate-300 italic">unexpected.</span></h2>
         <button
           onClick={() => reset()}
-          className="px-10 py-4 bg-foreground text-background rounded-full text-xs font-bold uppercase tracking-widest hover:bg-accent transition-all"
+          className="px-10 py-4 bg-slate-900 text-white rounded-full text-xs font-bold uppercase tracking-widest hover:bg-blue-600 transition-all"
         >
           Try again
         </button>

@@ -1,44 +1,24 @@
 
-import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import React from "react";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
-const inter = Inter({ 
-  subsets: ["latin"],
-  variable: "--font-sans",
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-});
-
-export const metadata: Metadata = {
-  title: "Qiyue Chen | Senior Full-Stack Engineer Portfolio",
-  description: "Senior engineer specializing in high-concurrency distributed systems, AI products, and premium frontend experiences.",
-  openGraph: {
-    title: "Qiyue Chen Portfolio",
-    description: "Architecting resilient digital ecosystems.",
-    type: "website",
-  },
-};
+// Note: In a real Next.js app, we'd use Metadata and Google Fonts here.
+// For the preview, we rely on the index.html head for fonts.
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
-      <body className="noise">
-        <Navbar />
-        <main className="min-h-screen">
-          {children}
-        </main>
-        <Footer />
-      </body>
-    </html>
+    <div className="noise flex flex-col min-h-screen">
+      <Navbar />
+      <main className="flex-grow">
+        {children}
+      </main>
+      <Footer />
+    </div>
   );
 }

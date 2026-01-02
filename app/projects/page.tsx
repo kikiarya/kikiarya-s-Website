@@ -2,11 +2,11 @@
 "use client";
 
 import React, { useState, useMemo } from 'react';
-import Container from '@/components/Container';
-import Reveal from '@/components/Reveal';
-import SectionHeader from '@/components/SectionHeader';
-import ProjectCard from '@/components/ProjectCard';
-import { projects } from '@/lib/projects';
+import Container from '../../components/Container';
+import Reveal from '../../components/Reveal';
+import SectionHeader from '../../components/SectionHeader';
+import ProjectCard from '../../components/ProjectCard';
+import { projects } from '../../lib/projects';
 import { Search } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -36,8 +36,7 @@ export default function ProjectsPage() {
           />
         </Reveal>
 
-        {/* Filter & Search UI 过滤器与搜索 */}
-        <div className="mt-16 mb-20 flex flex-col md:flex-row justify-between items-start md:items-center gap-8 pb-10 border-b border-border">
+        <div className="mt-16 mb-20 flex flex-col md:flex-row justify-between items-start md:items-center gap-8 pb-10 border-b border-gray-100">
           <div className="flex flex-wrap gap-3">
             {categories.map((cat) => (
               <button
@@ -45,8 +44,8 @@ export default function ProjectsPage() {
                 onClick={() => setFilter(cat)}
                 className={`px-5 py-2 text-[10px] uppercase tracking-widest font-bold rounded-full transition-all border ${
                   filter === cat 
-                    ? 'bg-foreground border-foreground text-background' 
-                    : 'bg-transparent border-border text-slate-400 hover:border-foreground hover:text-foreground'
+                    ? 'bg-slate-900 border-slate-900 text-white' 
+                    : 'bg-transparent border-gray-200 text-slate-400 hover:border-slate-900 hover:text-slate-900'
                 }`}
               >
                 {cat}
@@ -55,18 +54,17 @@ export default function ProjectsPage() {
           </div>
 
           <div className="relative w-full md:w-80 group">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-accent transition-colors" size={16} />
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-blue-600 transition-colors" size={16} />
             <input 
               type="text" 
               placeholder="Search projects..." 
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-12 pr-6 py-3.5 bg-slate-50 border border-border rounded-full text-xs focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-all"
+              className="w-full pl-12 pr-6 py-3.5 bg-slate-50 border border-gray-100 rounded-full text-xs focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 transition-all"
             />
           </div>
         </div>
 
-        {/* Projects Grid 项目网格 */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-20 min-h-[400px]">
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((p, i) => (

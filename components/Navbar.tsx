@@ -1,12 +1,15 @@
 
+"use client";
+
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import Container from './Container';
 import { motion } from 'framer-motion';
 
 const Navbar: React.FC = () => {
-  const location = useLocation();
-  const pathname = location.pathname;
+  // Use a fallback to prevent "null.startsWith" errors
+  const pathname = usePathname() || '/';
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -27,17 +30,17 @@ const Navbar: React.FC = () => {
     }`}>
       <Container>
         <div className="flex justify-between items-center">
-          <Link to="/" className="text-lg font-bold tracking-tighter hover:opacity-70 transition-opacity">
+          <Link href="/" className="text-lg font-bold tracking-tighter hover:opacity-70 transition-opacity">
             QY.CH <span className="text-blue-600">.</span>
           </Link>
 
           <div className="flex items-center space-x-10">
             {navLinks.map((link) => {
-              const isActive = pathname === link.path || pathname.startsWith(link.path + '/');
+              const isActive = pathname === link.path || (link.path !== '/' && pathname.startsWith(link.path));
               return (
                 <Link
                   key={link.path}
-                  to={link.path}
+                  href={link.path}
                   className={`text-[10px] uppercase tracking-widest font-bold transition-all hover:text-blue-600 relative ${
                     isActive ? 'text-black' : 'text-slate-500'
                   }`}

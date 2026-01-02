@@ -1,6 +1,8 @@
 
+"use client";
+
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import Tag from './Tag';
 import { Project } from '../lib/projects';
@@ -19,7 +21,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
     >
-      <Link to={`/projects/${project.slug}`} className="group block">
+      <Link href={`/projects/${project.slug}`} className="group block">
         <div className="aspect-[16/10] bg-slate-100 rounded-2xl overflow-hidden mb-6 border border-gray-100 relative">
           <div className="absolute inset-0 bg-blue-600/0 group-hover:bg-blue-600/5 transition-colors duration-500"></div>
           <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-95 group-hover:scale-100">
