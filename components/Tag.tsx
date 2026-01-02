@@ -3,12 +3,12 @@ import React from 'react';
 
 interface TagProps {
   label: string;
+  className?: string;
 }
 
-// Skill tag component 技能标签组件
-const Tag: React.FC<TagProps> = ({ label }) => {
+const Tag: React.FC<TagProps> = ({ label, className }) => {
   return (
-    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+    <span className={`px-2.5 py-0.5 border border-border rounded-full text-[9px] font-bold uppercase tracking-widest text-slate-500 bg-white/50 inline-block ${className}`}>
       {label}
     </span>
   );

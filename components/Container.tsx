@@ -1,15 +1,20 @@
 
 import React from 'react';
+import { clsx, type ClassValue } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+
+function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
 
 interface ContainerProps {
   children: React.ReactNode;
   className?: string;
 }
 
-// Standardized page container 标准化页面容器
-const Container: React.FC<ContainerProps> = ({ children, className = '' }) => {
+const Container: React.FC<ContainerProps> = ({ children, className }) => {
   return (
-    <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ${className}`}>
+    <div className={cn("max-w-[1200px] mx-auto px-6 md:px-12", className)}>
       {children}
     </div>
   );
