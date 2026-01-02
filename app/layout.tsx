@@ -1,11 +1,13 @@
-
 import React from "react";
 import "./globals.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
-// Note: In a real Next.js app, we'd use Metadata and Google Fonts here.
-// For the preview, we rely on the index.html head for fonts.
+// Metadata for SEO (Next.js specific)
+export const metadata = {
+  title: "Qiyue Chen | Senior Full-Stack Engineer",
+  description: "Systems-focused Full Stack Engineer specializing in distributed architecture and AI products.",
+};
 
 export default function RootLayout({
   children,
@@ -13,12 +15,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="noise flex flex-col min-h-screen">
-      <Navbar />
-      <main className="flex-grow">
-        {children}
-      </main>
-      <Footer />
-    </div>
+    <html lang="en">
+      <body className="noise selection:bg-blue-100 antialiased">
+        <div className="flex flex-col min-h-screen">
+          <Navbar />
+          <main className="flex-grow">
+            {children}
+          </main>
+          <Footer />
+        </div>
+      </body>
+    </html>
   );
 }

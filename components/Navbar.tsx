@@ -8,8 +8,8 @@ import Container from './Container';
 import { motion } from 'framer-motion';
 
 const Navbar: React.FC = () => {
-  // Use a fallback to prevent "null.startsWith" errors
-  const pathname = usePathname() || '/';
+  // 仅在 Next.js 环境下运行，安全获取当前路径
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -36,7 +36,7 @@ const Navbar: React.FC = () => {
 
           <div className="flex items-center space-x-10">
             {navLinks.map((link) => {
-              const isActive = pathname === link.path || (link.path !== '/' && pathname.startsWith(link.path));
+              const isActive = pathname === link.path || (link.path !== '/' && pathname?.startsWith(link.path));
               return (
                 <Link
                   key={link.path}

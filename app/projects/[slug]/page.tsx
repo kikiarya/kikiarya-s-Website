@@ -8,10 +8,11 @@ import Reveal from '../../../components/Reveal';
 import Tag from '../../../components/Tag';
 import DemoFrame from '../../../components/DemoFrame';
 import { getProjectBySlug } from '../../../lib/projects';
-import { Github, ExternalLink, ArrowLeft, Cpu, Layout, Workflow, Code, Target } from 'lucide-react';
+import { Github, ExternalLink, ArrowLeft, Layout, Code } from 'lucide-react';
 import Link from 'next/link';
 
 export default function ProjectDetailPage() {
+  // useParams 是 Next.js 官方提供的获取路由参数的方式
   const params = useParams();
   const slug = params?.slug as string;
   const project = getProjectBySlug(slug);
@@ -57,12 +58,12 @@ export default function ProjectDetailPage() {
           </div>
           <div className="flex gap-4">
             {project.repoUrl && (
-              <a href={project.repoUrl} target="_blank" className="p-3 bg-slate-900 text-white rounded-full hover:bg-blue-600 transition-all hover:scale-110 active:scale-90">
+              <a href={project.repoUrl} target="_blank" rel="noopener noreferrer" className="p-3 bg-slate-900 text-white rounded-full hover:bg-blue-600 transition-all hover:scale-110 active:scale-90">
                 <Github size={18} />
               </a>
             )}
             {project.demoUrl && (
-              <a href={project.demoUrl} target="_blank" className="p-3 bg-blue-600 text-white rounded-full hover:bg-slate-900 transition-all hover:scale-110 active:scale-90">
+              <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" className="p-3 bg-blue-600 text-white rounded-full hover:bg-slate-900 transition-all hover:scale-110 active:scale-90">
                 <ExternalLink size={18} />
               </a>
             )}
